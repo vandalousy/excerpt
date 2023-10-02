@@ -10,7 +10,11 @@ class TextExcerpter implements Contracts\Excerpter
      */
     public function excerpt($text, $length)
     {
+
+    // Check if $text is a valid string and not empty
+    if (is_string($text) && !empty($text)) {
         // Remove HTML tags and trim white spaces
+        
         $text = trim(strip_tags($text));
 
         // Explode the text into an array of words
@@ -28,6 +32,15 @@ class TextExcerpter implements Contracts\Excerpter
         }
 
         return $excerpt;
+
     }
+    else
+    {
+      // Handle the case where $text is not a valid string
+      return "Invalid input. Please provide a non-empty string.";  
+    }
+
+    }
+
 
 }
